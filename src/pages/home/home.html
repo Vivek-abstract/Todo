@@ -1,14 +1,24 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
+    <ion-navbar>
+      <ion-title>
+        Todo App
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <ion-list>
+      <ion-item-sliding *ngFor="let task of tasks; let i=index">
+        <ion-item>
+          <h2>{{ task.name }}</h2>
+        </ion-item>
+        <ion-item-options side="left">
+          <button ion-button color="secondary" (click)="deleteTask(i)">
+            <ion-icon name="done-all"></ion-icon>
+            Done
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+    <button ion-button block (click)="showPrompt()">Add Task</button>
+  </ion-content>
